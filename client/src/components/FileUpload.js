@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./FileUpload.css";
-const FileUpload = ({ contract, account, provider }) => {
+const FileUpload = ({ contract, account, provider,onFileUpload }) => {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No image selected");
   const handleSubmit = async (e) => {
@@ -16,15 +16,18 @@ const FileUpload = ({ contract, account, provider }) => {
           url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
           data: formData,
           headers: {
-            pinata_api_key: `dcdcbb043ae3c03708a7`,
-            pinata_secret_api_key: `729722358761adc4f46de0754ae0821983e098350b46aeee623a2fdb5164d7fc`,
+            pinata_api_key: `18edc4d3e6b890c3f6fb`,
+            pinata_secret_api_key: `e2e3d087ea3e676f298bf36c040031d01176e2dac76269eb4c274b1a73b8c26a`,
             "Content-Type": "multipart/form-data",
+
           },
         });
-        const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
-        //const signer = contract.connect(provider.getSigner());
-        const signer = contract.connect(provider.getSigner());
-        signer.add(account, ImgHash);
+        const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
+        contract.add(account,ImgHash);
+        alert("Successfully Image Uploaded");
+        setFileName("No image selected");
+        setFile(null);
+        onFileUpload()
       } catch (e) {
         alert("Unable to upload image to Pinata");
       }
@@ -35,7 +38,7 @@ const FileUpload = ({ contract, account, provider }) => {
   };
   const retrieveFile = (e) => {
     const data = e.target.files[0]; //files array of files object
-    console.log(data);
+    // console.log(data);
     const reader = new window.FileReader();
     reader.readAsArrayBuffer(data);
     reader.onloadend = () => {
@@ -43,6 +46,8 @@ const FileUpload = ({ contract, account, provider }) => {
     };
     setFileName(e.target.files[0].name);
     e.preventDefault();
+    console.log('hello');
+    console.log(data);
   };
   return (
     <div className="top">
@@ -67,6 +72,6 @@ const FileUpload = ({ contract, account, provider }) => {
 };
 export default FileUpload;
 
-
-
+//dcdcbb043ae3c03708a7
+//729722358761adc4f46de0754ae0821983e098350b46aeee623a2fdb5164d7fc
 

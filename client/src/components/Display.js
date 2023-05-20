@@ -1,34 +1,28 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import "./Display.css";
-const Display = ({ contract, account }) => {
+const Display = ({ contract, account,onFileUpload }) => {
   const [data, setData] = useState("");
   const getdata = async () => {
     let dataArray;
-    const Otheraddress = "";
     try {
-      if (Otheraddress) {
-        dataArray = await contract.display(Otheraddress);
-        console.log(dataArray);
-      } else {
         dataArray = await contract.display(account);
-      }
+        console.log(dataArray);
     } catch (e) {
-      alert("You don't have access");
+      alert("Metamask not connected");
     }
+    // console.log(account);
     const isEmpty = Object.keys(dataArray).length === 0;
 
     if (!isEmpty) {
       const str = dataArray.toString();
       const str_array = str.split(",");
-      // console.log(str);
-      // console.log(str_array);
       const images = str_array.map((item, i) => {
         return (
           <a href={item} key={i} target="_blank">
             <img
               key={i}
-              src={`https://gateway.pinata.cloud/ipfs/${item.substring(6)}`}
-              alt="new"
+              src={`https://gateway.pinata.cloud/ipfs/${item.substring(34)}`}
+              alt="not found image"
               className="image-list"
             ></img>
           </a>
@@ -39,6 +33,15 @@ const Display = ({ contract, account }) => {
       alert("No image to display");
     }
   };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      getdata();
+    }, 30000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [onFileUpload]);
   return (
     <section id="display">
       <div className="image-list">{data}</div>
