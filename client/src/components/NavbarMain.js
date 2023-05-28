@@ -18,7 +18,7 @@ function Navbar() {
       }}
     >
         
-          PIXELCHAIN
+          CRYPTODRIVE
         
     </div>
   );

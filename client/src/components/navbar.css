@@ -1,0 +1,13 @@
+.nav-link:hover {
+    color: #f8a200;
+    background-color: #3e3b74;
+    padding-left:6px;
+    padding-right:6px;
+    border-radius: 10px;
+
+    padding-top: 18px;
+    padding-bottom: 17px;
+
+  }
+  
+  

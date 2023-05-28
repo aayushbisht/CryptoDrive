@@ -7,6 +7,12 @@ import FileUpload from "./components/FileUpload";
 import Display from "./components/Display";
 import Display2 from "./components/Display2";
 import Modal from "./components/Modal";
+import animationData from './Animation/upload.json';
+import animationData1 from './Animation/retreive.json';
+import Typist from "react-typist";
+
+import Lottie from 'react-lottie';
+
 import "./App.css";
 
 function App() {
@@ -64,29 +70,71 @@ function App() {
       )}
       <Router>
         <Navbar setModalOpen={setModalOpen} connectMetamask={connectMetamask} account={account} />
+{/* <h1 style={{ color: "#f7f7f7" }}>
+            CRYPTO<span style={{ color: "#8e
+            5cf8" }}>DRIVE</span>
+          </h1> */}
+         <div className="App">
+         <section id="upload">
 
-        <div className="App">
-          <h1 style={{ color: "#f7f7f7" }}>
-            PIXEL<span style={{ color: "#8e5cf8" }}>CHAIN</span>
-          </h1>
-          <div className="bg"></div>
-          <div className="bg bg2"></div>
-          <div className="bg bg3"></div>
-          <FileUpload
-            account={account}
-            provider={provider}
-            contract={contract}
-            onFileUpload={handleFileUpload}
-          />
-          <div style={{ marginBottom: "270px" }}>
+          <h1 className="upload-heading" style={{marginTop :"180px",fontSize:"50px"}}>
+            
+            Upload your files here!</h1>
+          {/* <div className="file-upload-section" style={{marginTop:"40px"}} >
+  <FileUpload
+    account={account}
+    provider={provider}
+    contract={contract}
+    onFileUpload={handleFileUpload}
+  />
+  
+</div>  */}
+<div className="container">
+  
+  <div className="section1">
+  <FileUpload
+    account={account}
+    provider={provider}
+    contract={contract}
+    onFileUpload={handleFileUpload}
+  />
+  </div>
+  <div className="section2">
+  <Lottie
+    options={{
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+    }}
+    height={250} // Adjust the height as needed
+    width={250} // Adjust the width as needed
+  />
+  </div>
+</div>
+</section>
+
+
+          <section id="retreive" style={{marginTop:"400px"}}>
+          <div style={{ marginBottom: "270px", marginTop:"20px" }}>
+          <h3 className="upload-heading" style={{marginTop :"150px",fontSize:"50px"}}>Retreive your files here!</h3>
+          <Lottie style={{marginTop:"-75px"}}
+    options={{
+      loop: true,
+      autoplay: true,
+      animationData: animationData1,
+    }}
+    height={250} // Adjust the height as needed
+    width={250} // Adjust the width as needed
+  />
             <Display
               contract={contract}
               account={account}
-              onFileUpload={fileUploadCount}
+              onFileUpload={fileUploadCount }
             />
           </div>
+          </section>
           <section id="display2">
-          <Display2 contract={contract} account={account} />
+          <Display2 contract={contract} account={account} onFileUpload={fileUploadCount} />
           </section>
           <Modal contract={contract}></Modal>
         </div>

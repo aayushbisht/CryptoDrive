@@ -172,3 +172,44 @@ p {
   padding: 4px 12px;
   border-radius: 25px;
 }
+
+.file-upload-section {
+  background-color: #0e1b41;
+  padding: 20px;
+  border-radius: 8px;
+  width: 34%;
+  border-radius: 20px;
+  margin: 0 auto; /* Center horizontally */
+
+}
+
+.upload-heading {
+  color: #f7f7f7;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.section {
+  flex: 1;
+  
+  /* Additional styles for each section */
+}
+.section1{
+  background-color: #322f63;
+  border-radius: 20px;
+  height: 140px;
+ 
+}
+.section2{
+  border-radius: 20px;
+  margin-top:-55px
+}
+.section1 + .section2 {
+  margin-left: 10px; /* Adjust the value to set the gap between sections */
+}
