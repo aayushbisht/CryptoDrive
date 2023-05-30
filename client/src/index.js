@@ -18,7 +18,7 @@ const renderApp = () => {
 // Render the LandingPage initially
 ReactDOM.render(
   <React.StrictMode>
-    <LandingPage renderApp={renderApp} />
+    root.render(<App />);
   </React.StrictMode>,
   rootElement
 );
