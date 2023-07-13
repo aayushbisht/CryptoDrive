@@ -65,7 +65,7 @@ let contractAddress = "Your deployed contract address";
 ```
 npm start;
 ```
-8. You're ready to go. Visit http://localhost:3000/ to checkout MediBloc 
+8. You're ready to go. Visit http://localhost:3000/ to checkout CryptoDrive
 
 
 
