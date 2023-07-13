@@ -33,7 +33,6 @@ Follow the steps below to setup the project
 ### Prerequisites
 
 - Install and Setup Metamask extension in your browser
-- Install and Setup Ganache in you local system 
 
 ### Running the project
 
